@@ -56,13 +56,13 @@ const startGame = async () => {
   await redis.publish(channel, JSON.stringify(startEvent));
   logger.info(`Room ----------------(game number is -----) + ${gameCount} and round will end at -----${randomNumber}`);
 
-  const basePath = process.env.BASE_PATH;
+  const basePath = process.env.API_BASE_PATH;
   // !Calling  microservice API handler of on start event
   let url;
   if (basePath === '') {
-    url = `${process.env.INTERNAL_API_URL}/${process.env.BASE_PATH}webHook`;
+    url = `${process.env.INTERNAL_API_URL}/${process.env.API_BASE_PATH}webHook`;
   } else {
-    url = `${process.env.INTERNAL_API_URL}/${process.env.BASE_PATH}/webHook`;
+    url = `${process.env.INTERNAL_API_URL}/${process.env.API_BASE_PATH}/webHook`;
   }
 
   logger.info(
